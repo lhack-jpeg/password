@@ -37,10 +37,8 @@ app.get('/', async (req, res) => {
     const showRows = knex
         .from('passwords')
         .select('*')
-        .then((rows) => {
-            for (row of rows) {
-                res.send(row);
-            }
+        .then((results) => {
+            res.render('show', { results });
         })
         .catch((err) => {
             console.log(err);
