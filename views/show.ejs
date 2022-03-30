@@ -1,0 +1,9 @@
+<% layout('layouts/boilerplate') %>
+<h1>Passwords</h1>
+<div>
+    <% for(let password of results) {%>
+    <div>
+        <p>Name: <%= password.password_name %></p>
+    </div>
+    <% } %>
+</div>
