@@ -43,9 +43,19 @@ app.get('/', async (req, res) => {
         .catch((err) => {
             console.log(err);
             throw err;
-        })
-        .finally(() => {
-            knex.destroy();
+        });
+});
+
+app.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    const showOne = knex
+        .from('passwords')
+        .select('*')
+        .where('id', id)
+        .then((result) => {
+            console.log(result);
+            let rowData = result[0];
+            res.render('showOne', { rowData });
         });
 });
 
