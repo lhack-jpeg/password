@@ -1,9 +1,20 @@
 <% layout('layouts/boilerplate') %>
-<h1>Passwords</h1>
-<div>
+
+<h1 class="title">Passwords</h1>
+<div class="passwords_list">
     <% for(let password of results) {%>
-    <div>
-        <p>Name: <%= password.password_name %></p>
+    <div class="password_list_items">
+        <p class="password_list_item">Name: <%= password.password_name %></p>
+        <p class="password_list_item">Email: <%= password.email_username %></p>
+        <p class="password_list_item">
+            Created at: <%= password.created_at.toDateString() %>
+        </p>
+        <a
+            class="password_list_item"
+            id="password_list_item__show"
+            href="/<%= password.id %>"
+            >Show</a
+        >
     </div>
     <% } %>
 </div>
