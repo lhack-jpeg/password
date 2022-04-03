@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,900&display=swap");
+html {
+  margin: 0;
+  width: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+main {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-header {
+  background-color: #3f4fe6;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 3;
+  display: --webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-button {
+  width: 3rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+}
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button__bar {
+  width: 100%;
+  height: 0.2rem;
+  background: black;
+  display: block;
+  margin: 0.6rem 0;
+}
+
+.main-header__brand {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.main-nav__items {
+  margin: 0;
+  padding: 0;
+  padding-right: 1rem;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.main-nav__item {
+  padding-left: 1rem;
+}
+
+.title {
+  padding: 1rem;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  background-color: #6c36d1;
+  color: white;
+}
+
+.password_list {
+  display: block;
+}
+
+.password_list_items {
+  display: grid;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+}
+
+.password_list_item {
+  padding: 0.25rem 0.5rem;
+  margin: 0.5rem auto;
+}
+
+#password_list_item__show {
+  padding: 0.25rem 1rem;
+  text-decoration: none;
+  border: 1px solid #3be294;
+  border-radius: 5px;
+  background-color: #3be294;
+  color: #fff;
+}
+
+/*# sourceMappingURL=styles.css.map */
