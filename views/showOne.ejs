@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') %>
+
+<h1><%= rowData.password_name %></h1>
+
+<div class="details">
+    <h5>Email/Username: <%= rowData.email_username %></h5>
+    <h5>Password: <%= rowData.password %></h5>
+    <h5>Created at: <%= rowData.created_at.toDateString() %></h5>
+    <h5>Updated at: <%= rowData.updated_at.toDateString() %></h5>
+</div>
+
+<div>
+    <a href="/<%= rowData.id %>/edit ">Edit</a>
+</div>
