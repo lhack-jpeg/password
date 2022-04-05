@@ -6,7 +6,7 @@ toggleButton.addEventListener('click', function () {
     mobileNav.style.display = 'block';
     setTimeout(function () {
         backdrop.style.display = 'block';
-    }, 10);
+    }, 50);
 });
 
 backdrop.addEventListener('click', function () {
