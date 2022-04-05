@@ -25,7 +25,7 @@ main {
   left: 0;
   position: fixed;
   box-sizing: border-box;
-  z-index: 3;
+  z-index: 2;
   display: --webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -130,6 +130,7 @@ main {
 .title {
   padding: 1rem;
   margin: 0 auto;
+  margin-top: 4rem;
   width: 100%;
   text-align: center;
   background-color: #6c36d1;
@@ -151,6 +152,52 @@ main {
 .password_list_item {
   padding: 0.25rem 0.5rem;
   margin: 0.5rem auto;
+}
+
+.details {
+  margin: 0 auto;
+  margin-top: 4.5rem;
+  text-align: center;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  box-shadow: 5px 2px 2px 5px #ccc;
+}
+
+.details__edit {
+  background-color: #3be294;
+  border-color: #3be294;
+  width: 40%;
+  margin: auto;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+.details__edit a {
+  text-decoration: none;
+  color: white;
+}
+
+.form {
+  padding-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  width: 66%;
+  margin: auto;
+}
+.form label {
+  padding: 0.5rem 0;
+  font-weight: bold;
+}
+.form input {
+  border-radius: 2px;
+  border-color: #ccc;
+}
+.form button {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin: auto;
+  width: 40%;
 }
 
 #password_list_item__show {
