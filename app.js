@@ -38,12 +38,18 @@ app.get('/', async (req, res) => {
         .from('passwords')
         .select('*')
         .then((results) => {
+            console.log(results);
+            console.log('First item in array: ', results[0]);
             res.render('show', { results });
         })
         .catch((err) => {
             console.log(err);
             throw err;
         });
+});
+
+app.get('/add', (req, res) => {
+    res.render('new');
 });
 
 app.get('/:id', async (req, res) => {
@@ -54,7 +60,8 @@ app.get('/:id', async (req, res) => {
         .where('id', id)
         .then((result) => {
             console.log(result);
-            let rowData = result[0];
+            let rowData = { ...result[0] };
+            console.log('The single row: ', rowData);
             res.render('showOne', { rowData });
         });
 });
