@@ -1,0 +1,19 @@
+<% layout('layouts/boilerplate') %>
+
+<div>
+    <h1 class="title">Add new password</h1>
+    <form action="/" method="POST" class="form">
+        <label for="name">Password Name</label>
+        <input type="text" name="password[name]" id="name" />
+
+        <label for="email">Email/Username</label>
+        <input type="text" name="password[email_user]" id="email" />
+
+        <label for="password">Password:</label>
+        <input type="text" name="password[password]" id="password" />
+
+        <label for="userID">UserID</label>
+        <input type="text" name="password[userID]" id="userID" />
+        <button type="submit">Submit</button>
+    </form>
+</div>
