@@ -20,6 +20,7 @@ main {
 
 .main-header {
     background-color: #3f4fe6;
+    height: 8vh;
     padding: 0.5rem 1rem;
     width: 100%;
     top: 0;
@@ -47,6 +48,9 @@ main {
     &:focus {
         outline: none;
     }
+    @media (min-width: 40rem) {
+        display: none;
+    }
 }
 
 .toggle-button__bar {
@@ -59,6 +63,9 @@ main {
 
 .main-nav {
     display: none;
+    @media (min-width: 40rem) {
+        display: block;
+    }
 }
 
 .main-header__brand {
@@ -132,7 +139,7 @@ main {
 .title {
     padding: 1rem;
     margin: 0 auto;
-    margin-top: 4rem;
+    margin-top: 8vh;
     width: 100%;
     text-align: center;
     background-color: #6c36d1;
