@@ -5,8 +5,6 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const path = require('path');
 const ejsMate = require('ejs-mate');
-const mysql = require('mysql');
-const mysql2 = require('mysql2');
 const { response } = require('express');
 const knex = require('knex')({
     client: 'mysql2',
@@ -37,10 +35,35 @@ app.get('/', async (req, res) => {
     const showRows = knex
         .from('passwords')
         .select('*')
+        .then((rows) => {
+            // console.log(rows);
+            // console.log('First item in array: ', rows[0]);
+            res.render('show', { rows });
+        })
+        .catch((err) => {
+            console.log(err);
+            throw err;
+        });
+});
+
+app.post('/', async (req, res) => {
+    console.log(req.body.password);
+    const { name, email_user, password, userID } = req.body.password;
+    knex('passwords')
+        .insert({
+            password_name: name,
+            email_username: email_user,
+            pword: password,
+            users_id: userID,
+        })
         .then((results) => {
-            console.log(results);
-            console.log('First item in array: ', results[0]);
-            res.render('show', { results });
+            knex.from('passwords')
+                .select('*')
+                .then((rows) => {
+                    // console.log(rows);
+                    // console.log('First item in array: ', rows[0]);
+                    res.render('show', { rows });
+                });
         })
         .catch((err) => {
             console.log(err);
@@ -60,7 +83,7 @@ app.get('/:id', async (req, res) => {
         .where('id', id)
         .then((result) => {
             console.log(result);
-            let rowData = { ...result[0] };
+            let rowData = result[0];
             console.log('The single row: ', rowData);
             res.render('showOne', { rowData });
         });
