@@ -6,6 +6,7 @@ const express = require('express');
 const path = require('path');
 const ejsMate = require('ejs-mate');
 const { response } = require('express');
+const methodOverride = require('method-override');
 const knex = require('knex')({
     client: 'mysql2',
     connection: {
@@ -22,6 +23,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 // connection.connect((err) => {
 //     if (err) {
@@ -71,8 +73,37 @@ app.post('/', async (req, res) => {
         });
 });
 
+app.put('/:id', async (req, res) => {
+    const { id } = req.params;
+    const { name, email_user, password, userID } = req.body.password;
+    console.log(id);
+    const update = await knex('passwords').where({ id: id }).update({
+        password_name: name,
+        email_username: email_user,
+        pword: password,
+        users_id: userID,
+    });
+    if (update) {
+        res.redirect(`/${id}`);
+    } else {
+        res.send('Failed to update');
+    }
+});
+
 app.get('/add', (req, res) => {
     res.render('new');
+});
+
+app.get('/:id/edit', async (req, res) => {
+    const { id } = req.params;
+    const showOne = await knex.from('passwords').select('*').where('id', id);
+    if (showOne) {
+        let row = showOne[0];
+        console.log(row);
+        res.render('edit', { row });
+    } else {
+        res.status(404).send(body);
+    }
 });
 
 app.get('/:id', async (req, res) => {
