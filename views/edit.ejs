@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate') %>
+
+<div>
+    <h1 class="title">edit password</h1>
+    <form action="/<%= row.id %>?_method=PUT" method="POST" class="form">
+        <label for="name">Password Name</label>
+        <input
+            type="text"
+            name="password[name]"
+            id="name"
+            value="<%= row.password_name%>"
+        />
+
+        <label for="email">Email/Username</label>
+        <input
+            type="text"
+            name="password[email_user]"
+            id="email"
+            value="<%= row.email_username %>"
+        />
+
+        <label for="password">Password:</label>
+        <input
+            type="text"
+            name="password[password]"
+            id="password"
+            value="<%= row.pword %>"
+        />
+
+        <label for="userID">UserID</label>
+        <input
+            type="text"
+            name="password[userID]"
+            id="userID"
+            value="<%= row.users_id %>"
+        />
+        <button type="submit">Submit</button>
+    </form>
+</div>
