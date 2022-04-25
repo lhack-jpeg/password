@@ -173,16 +173,37 @@ main {
     box-shadow: 5px 2px 2px 5px #ccc;
 }
 
+.details__buttons {
+    display: flex;
+    flex-direction: row;
+}
+
 .details__edit {
     background-color: #3be294;
     border-color: #3be294;
-    width: 40%;
     margin: auto;
     border-radius: 5px;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
+    width: 3rem;
     a {
         text-decoration: none;
         color: white;
+    }
+}
+
+.details__delete {
+    margin: auto;
+    button {
+        background-color: #fa2d2d;
+        border-color: #fa2d2d;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        color: white;
+        font-family: inherit;
+        font-size: inherit;
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 
@@ -198,8 +219,11 @@ main {
         font-weight: bold;
     }
     input {
-        border-radius: 2px;
+        border-radius: 4px;
         border-color: #ccc;
+    }
+    input[type='text'] {
+        font-family: inherit;
     }
 
     button {
