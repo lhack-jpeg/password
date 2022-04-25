@@ -6,7 +6,14 @@
     <h5>Password: <%= rowData.pword %></h5>
     <h5>Created at: <%= rowData.created_at.toDateString() %></h5>
     <h5>Updated at: <%= rowData.updated_at.toDateString() %></h5>
-    <div class="details__edit">
-        <a href="/<%= rowData.id %>/edit ">Edit</a>
+    <div class="details__buttons">
+        <div class="details__edit">
+            <a href="/<%= rowData.id %>/edit ">Edit</a>
+        </div>
+        <div class="details__delete">
+            <form action="/<%= rowData.id %>?_method=DELETE" method="POST">
+                <button>DELETE</button>
+            </form>
+        </div>
     </div>
 </div>
