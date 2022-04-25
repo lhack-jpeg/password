@@ -76,12 +76,14 @@ app.post('/', async (req, res) => {
 app.put('/:id', async (req, res) => {
     const { id } = req.params;
     const { name, email_user, password, userID } = req.body.password;
+    const updateTime = new Date().toISOString().slice(0, 19);
     console.log(id);
     const update = await knex('passwords').where({ id: id }).update({
         password_name: name,
         email_username: email_user,
         pword: password,
         users_id: userID,
+        updated_at: updateTime,
     });
     if (update) {
         res.redirect(`/${id}`);
@@ -118,6 +120,29 @@ app.get('/:id', async (req, res) => {
             console.log('The single row: ', rowData);
             res.render('showOne', { rowData });
         });
+});
+
+app.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const deletePassword = await knex('passwords').where({ id: id }).del();
+        if (deletePassword) {
+            try {
+                const rows = await knex.from('passwords').select('*');
+                if (rows) {
+                    res.render('show', { rows });
+                } else {
+                    res.status(404);
+                }
+            } catch (err) {
+                res.send(err);
+            }
+        } else {
+            res.status(404);
+        }
+    } catch (err) {
+        res.send(err);
+    }
 });
 
 const port = 3000 || process.env.PORT;
