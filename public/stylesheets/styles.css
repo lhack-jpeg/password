@@ -91,6 +91,14 @@ main {
 .main-nav__item {
   padding-left: 1rem;
 }
+.main-nav__item a {
+  color: white;
+  text-decoration: none;
+  padding: 4px;
+}
+.main-nav__item a:hover {
+  border-bottom: 1px solid white;
+}
 
 .backdrop {
   display: none;
@@ -133,7 +141,7 @@ main {
 }
 .mobile-nav__item a {
   text-decoration: none;
-  color: #1f70f2;
+  color: #6c36d1;
   padding-bottom: 0.5rem;
   font-size: 1.5rem;
 }
@@ -168,7 +176,7 @@ main {
 .details {
   margin: 0 auto;
   margin-top: 4.5rem;
-  text-align: center;
+  text-align: left;
   border: 1px solid grey;
   border-radius: 5px;
   padding: 0.5rem 1rem;
@@ -180,17 +188,21 @@ main {
   flex-direction: row;
 }
 
-.details__edit {
+.details__buttons a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
   background-color: #3be294;
-  border-color: #3be294;
+  border: 1px solid #3be294;
   margin: auto;
   border-radius: 5px;
   padding: 0.5rem 1rem;
   width: 3rem;
+  transition: color, background-color 250ms ease-in-out;
 }
-.details__edit a {
-  text-decoration: none;
-  color: white;
+.details__buttons a:hover {
+  color: #3be294;
+  background-color: white;
 }
 
 .details__delete {
@@ -204,9 +216,12 @@ main {
   color: white;
   font-family: inherit;
   font-size: inherit;
+  transition: color, background-color 250ms ease-in-out;
 }
 .details__delete button:hover {
   cursor: pointer;
+  color: orange;
+  background-color: #d50505;
 }
 
 .form {
@@ -242,6 +257,10 @@ main {
   border-radius: 5px;
   background-color: #3be294;
   color: #fff;
+  transition: background-color 250ms ease-in-out;
+}
+#password_list_item__show:hover {
+  background-color: #1ecc7b;
 }
 
 @keyframes moveToRight {

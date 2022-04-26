@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,900&display=swap');
 
+@import '_variables.scss';
+
 html {
     margin: 0;
     width: 100%;
@@ -19,7 +21,7 @@ main {
 }
 
 .main-header {
-    background-color: #3f4fe6;
+    background-color: map-get($colors, main);
     height: 8vh;
     padding: 0.5rem 1rem;
     width: 100%;
@@ -88,6 +90,16 @@ main {
 
 .main-nav__item {
     padding-left: 1rem;
+
+    a {
+        color: white;
+        text-decoration: none;
+        padding: 4px;
+
+        &:hover {
+            border-bottom: 1px solid white;
+        }
+    }
 }
 
 .backdrop {
@@ -130,7 +142,7 @@ main {
     padding-bottom: 0.5rem;
     a {
         text-decoration: none;
-        color: #1f70f2;
+        color: map-get($colors, secondary);
         padding-bottom: 0.5rem;
         font-size: 1.5rem;
     }
@@ -142,7 +154,7 @@ main {
     margin-top: 8vh;
     width: 100%;
     text-align: center;
-    background-color: #6c36d1;
+    background-color: map-get($colors, secondary);
     color: white;
 }
 
@@ -166,7 +178,7 @@ main {
 .details {
     margin: 0 auto;
     margin-top: 4.5rem;
-    text-align: center;
+    text-align: left;
     border: 1px solid grey;
     border-radius: 5px;
     padding: 0.5rem 1rem;
@@ -178,31 +190,41 @@ main {
     flex-direction: row;
 }
 
-.details__edit {
-    background-color: #3be294;
-    border-color: #3be294;
+.details__buttons a {
+    // -webkit-appearance: button;
+    // -moz-appearance: button;
+    // appearance: button;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    background-color: map-get($colors, normal_button);
+    border: 1px solid map-get($colors, normal_button);
     margin: auto;
     border-radius: 5px;
     padding: 0.5rem 1rem;
     width: 3rem;
-    a {
-        text-decoration: none;
-        color: white;
+    transition: color, background-color 250ms ease-in-out;
+    &:hover {
+        color: map-get($colors, normal_button);
+        background-color: white;
     }
 }
 
 .details__delete {
     margin: auto;
     button {
-        background-color: #fa2d2d;
-        border-color: #fa2d2d;
+        background-color: map-get($colors, delete_button);
+        border-color: map-get($colors, delete_button);
         border-radius: 5px;
         padding: 0.5rem 1rem;
         color: white;
         font-family: inherit;
         font-size: inherit;
+        transition: color, background-color 250ms ease-in-out;
         &:hover {
             cursor: pointer;
+            color: orange;
+            background-color: darken((map-get($colors, delete_button)), 15%);
         }
     }
 }
@@ -237,10 +259,14 @@ main {
 #password_list_item__show {
     padding: 0.25rem 1rem;
     text-decoration: none;
-    border: 1px solid #3be294;
+    border: 1px solid map-get($colors, normal_button);
     border-radius: 5px;
-    background-color: #3be294;
+    background-color: map-get($colors, normal_button);
     color: #fff;
+    transition: background-color 250ms ease-in-out;
+    &:hover {
+        background-color: darken((map-get($colors, normal_button)), 10%);
+    }
 }
 
 @keyframes moveToRight {
