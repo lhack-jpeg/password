@@ -21,7 +21,12 @@ main {
 }
 
 .main-header {
-    background-color: map-get($colors, main);
+    background: linear-gradient(
+        45deg,
+        lighten((map-get($colors, main)), 15%),
+        15%,
+        map-get($colors, main)
+    );
     height: 8vh;
     padding: 0.5rem 1rem;
     width: 100%;
@@ -58,7 +63,7 @@ main {
 .toggle-button__bar {
     width: 100%;
     height: 0.2rem;
-    background: black;
+    background: white;
     display: block;
     margin: 0.6rem 0;
 }
@@ -94,10 +99,12 @@ main {
     a {
         color: white;
         text-decoration: none;
-        padding: 4px;
-
+        padding: 0.4rem;
+        background-color: lighten(map-get($colors, main), 0.5%);
+        border-radius: 3px;
         &:hover {
             border-bottom: 1px solid white;
+            background-color: lighten(map-get($colors, main), 10%);
         }
     }
 }
@@ -158,16 +165,33 @@ main {
     color: white;
 }
 
-.password_list {
-    display: block;
+.passwords_list {
+    background-color: #9e9e9efb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 90%;
+    border: 1px solid #fff;
 }
 
 .password_list_items {
     display: grid;
     width: 100%;
+    border-radius: 3px;
     border-bottom: 1px solid #ccc;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
+
+    @media (max-width: 40rem) {
+        display: --webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 0.75rem;
+    }
 }
 
 .password_list_item {
@@ -191,9 +215,6 @@ main {
 }
 
 .details__buttons a {
-    // -webkit-appearance: button;
-    // -moz-appearance: button;
-    // appearance: button;
     text-decoration: none;
     color: white;
     text-align: center;
@@ -264,6 +285,9 @@ main {
     background-color: map-get($colors, normal_button);
     color: #fff;
     transition: background-color 250ms ease-in-out;
+    max-height: 21.6px;
+    margin: auto;
+
     &:hover {
         background-color: darken((map-get($colors, normal_button)), 10%);
     }
