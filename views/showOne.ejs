@@ -7,10 +7,13 @@
     <h5>Created at: <%= rowData.created_at.toDateString() %></h5>
     <h5>Updated at: <%= rowData.updated_at.toDateString() %></h5>
     <div class="details__buttons">
-        <a href="/<%= rowData.id %>/edit">Edit</a>
+        <a href="/passwords/<%= rowData.id %>/edit">Edit</a>
         <!-- <div class="details__edit"></div> -->
         <div class="details__delete">
-            <form action="/<%= rowData.id %>?_method=DELETE" method="POST">
+            <form
+                action="/passwords/<%= rowData.id %>?_method=DELETE"
+                method="POST"
+            >
                 <button>DELETE</button>
             </form>
         </div>
