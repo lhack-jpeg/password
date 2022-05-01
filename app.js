@@ -8,6 +8,10 @@ const ejsMate = require('ejs-mate');
 const { response } = require('express');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const crypto = require('crypto');
+const bodyParser = require('body-parser');
 const mysqlStore = require('express-mysql-session')(session);
 const knex = require('knex')({
     client: 'mysql2',
@@ -58,29 +62,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(session(sessionConfig));
-
-// connection.connect((err) => {
-//     if (err) {
-//         console.error('error connecting ' + err.stack);
-//     }
-
-//     console.log(`Connected via ${connection.threadId}`);
-// });
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(new LocalStrategy());
 
 app.get('/', (req, res) => {
     res.render('home');
-    // const showRows = knex
-    //     .from('passwords')
-    //     .select('*')
-    //     .then((rows) => {
-    //         // console.log(rows);
-    //         // console.log('First item in array: ', rows[0]);
-    //         res.render('show', { rows });
-    //     })
-    //     .catch((err) => {
-    //         console.log(err);
-    //         throw err;
-    //     });
 });
 
 app.post('/', async (req, res) => {
